@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — RadHelper Clario Bridge</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #222;
+    }
+    h1 { font-size: 1.5rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; }
+    h2 { font-size: 1.15rem; margin-top: 2rem; }
+    ul { padding-left: 1.5rem; }
+    code { background: #f4f4f4; padding: 0.15em 0.35em; border-radius: 3px; font-size: 0.9em; }
+    .updated { color: #666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy — RadHelper Clario Bridge</h1>
+  <p class="updated">Last updated: March 5, 2026</p>
+
+  <h2>Overview</h2>
+  <p>
+    RadHelper Clario Bridge is a Chrome extension that connects the Clario
+    (BicRad) diagnostic imaging platform to the local RadHelper desktop agent.
+    All communication occurs entirely on your local machine. <strong>No data is
+    sent to any external server.</strong>
+  </p>
+
+  <h2>What Data Is Accessed</h2>
+  <p>The extension accesses the following information from Clario pages
+    (<code>*.bicrad.com</code>) only:</p>
+  <ul>
+    <li><strong>Page state:</strong> Worklist status, jacket state, case counts,
+      auto-next status, and navigation events.</li>
+    <li><strong>User login ID:</strong> The Clario session username.</li>
+    <li><strong>Patient and exam metadata:</strong> Patient name, MRN, accession
+      number, modality, and related exam details intercepted from Clario RPC
+      responses.</li>
+  </ul>
+
+  <h2>How Data Is Transmitted</h2>
+  <p>
+    All data is sent exclusively to the locally-installed RadHelper desktop agent
+    via <strong>Chrome native messaging</strong> (stdio). Native messaging is a
+    local inter-process communication channel — data never leaves your machine
+    and is never transmitted over a network.
+  </p>
+  <p>The extension does not use any external APIs, analytics services, crash
+    reporters, or telemetry of any kind.</p>
+
+  <h2>Data Storage</h2>
+  <p>
+    The extension itself stores no data. It acts as a stateless relay between
+    Clario and the local RadHelper agent. The RadHelper agent may log data
+    locally per user-configured settings; see the RadHelper documentation for
+    details.
+  </p>
+
+  <h2>Protected Health Information (PHI)</h2>
+  <p>
+    The extension processes protected health information (PHI) — specifically
+    patient names, MRNs, and accession numbers — solely to relay it to the local
+    RadHelper agent for radiology workflow automation. All PHI remains on the
+    user's machine at all times.
+  </p>
+
+  <h2>Third-Party Sharing</h2>
+  <p>No data is shared with any third party. Period.</p>
+
+  <h2>Permission Justifications</h2>
+  <ul>
+    <li><strong><code>nativeMessaging</code>:</strong> Communicates with the local
+      RadHelper desktop agent via stdio for bidirectional command and event
+      relay.</li>
+    <li><strong><code>scripting</code>:</strong> Injects page hooks into Clario
+      (<code>bicrad.com</code>) to monitor application state and execute workflow
+      commands.</li>
+    <li><strong><code>tabs</code>:</strong> Resolves active tab metadata to route
+      commands to the correct Clario tab.</li>
+    <li><strong><code>windows</code>:</strong> Queries window bounds for workspace
+      layout management by the local agent.</li>
+    <li><strong><code>webNavigation</code>:</strong> Detects page navigation events
+      on <code>bicrad.com</code> to track Clario session state changes.</li>
+    <li><strong>Host permission (<code>*.bicrad.com</code>):</strong> The extension
+      only operates on the Clario diagnostic imaging platform and does not access
+      any other websites.</li>
+  </ul>
+
+  <h2>Changes to This Policy</h2>
+  <p>
+    If this policy is updated, the new version will be posted at this URL with an
+    updated date. Continued use of the extension after changes constitutes
+    acceptance of the revised policy.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    For questions or concerns about this privacy policy, please open an issue at
+    <a href="https://github.com/airecken/rad_helper-releases/issues">
+      github.com/airecken/rad_helper-releases/issues</a>.
+  </p>
+</body>
+</html>
